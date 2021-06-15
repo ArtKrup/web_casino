@@ -1,0 +1,42 @@
+{% extends "games/base_web_casino.html" %}
+{% block title %}
+{{ title }}
+{% endblock %}
+{% block content %}
+<h1 class="title_title">{{ title }}</h1>
+<table>
+    <tr>
+        <th>Ваша первая карта:</th>
+        <th>Ваша вторая карта:</th>
+        <th>Карта Дилера:</th>
+        <th>Решение Помощника:</th>
+    </tr>
+    <tr>
+            <td>{{ hand.first_card }}</td>
+            <td>{{ hand.second_card }}</td>
+            <td>{{ hand.dealer_card }}</td>
+            <td>{{ hand.decision }}</td>
+    </tr>
+</table>
+
+<div class="form-conteiner">
+    <form action="{% url 'bj_result' object.pk %}" method="post" enctype="multipart/form-data" class="form__action">
+        {% csrf_token %}
+
+        <div class="form-error">{{ form.non_field_errors }}</div>
+
+
+        <div class="select-wrapper">
+            <label class="filters__select result" >Результат Этой Раздачи: </label>
+            {{ form.win_result }}
+        </div>
+        <div class="form-error">{{ form.errors }}</div>
+
+
+
+        <div class="button-wrapper">
+            <button class="content__view button-btn" type="submit">Перейти к следующей раздаче</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "games/base_web_casino.html" %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+<div class="content_box">
+    <h1>{{ game.name }}</h1>
+    {% if game.image %}
+    <p><img class="img-article-left" src="{{game.image.url}}"></p>
+    {% endif %}
+    <div class="content_box_rules"><h3>{{ game.rules|linebreaks }}</h3></div>
+    <div class="content_box_payouts"><h2>{{ game.payouts|linebreaks }}</h2></div>
+    <p class="content-box-time">{{ game.time_update }}</p>
+</div>
+{% endblock %}
+
+{

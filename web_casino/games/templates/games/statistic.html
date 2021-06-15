@@ -1,0 +1,33 @@
+{% extends "games/base_web_casino.html" %}
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+<h1 class="title_title">{{ title }}</h1>
+<div class="content__container">
+
+    <table>
+        {% for s in stats %}
+        <tr>
+            <th>Первая Карта</th>
+            <th>Вторая Карта</th>
+            <th>Карта Дилера</th>
+            <th>Решение Помощника</th>
+            <th>Результат</th>
+            <th>Время раздачи</th>
+        </tr>
+        <tr>
+            <td>{{ s.first_card }}</td>
+            <td>{{ s.second_card }}</td>
+            <td>{{ s.dealer_card }}</td>
+            <td>{{ s.decision }}</td>
+            <td>{{ s.win_result }}</td>
+            <td>{{ s.time_hand }}</td>
+        </tr>
+
+        {% endfor %}
+    </table>
+</div>
+
+{% endblock %}

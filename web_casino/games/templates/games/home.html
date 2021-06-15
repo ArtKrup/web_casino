@@ -1,0 +1,23 @@
+{% extends "games/base_web_casino.html" %}
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+<div class="content__container">
+
+<ul class="content__cards">
+    {% for p in games %}
+    <li class="content__card">
+        <img class="content__image" src="{{p.image.url}}" alt="image">
+        <p class="content__title">{{ p.name }}</p>
+
+            <a href="{{ p.get_absolute_url }}" class="content__view">Посмотреть</a>
+
+    </li>
+    {% endfor %}
+</ul>
+</div>
+
+{% endblock %}
+

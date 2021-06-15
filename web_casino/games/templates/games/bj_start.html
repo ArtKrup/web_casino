@@ -1,0 +1,26 @@
+{% extends "games/base_web_casino.html" %}
+
+{% block content %}
+<h1 class="title_title">{{ title }}</h1>
+
+<div class="form-conteiner">
+    <form action="{% url 'bj_start' %}" method="post" class="form__action" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div class="form-error">{{ form.non_field_errors }}</div>
+
+        {% for f in form %}
+        <div class="select-wrapper">
+            <label class="filters__select" for="{{ f.id_for_label }}">{{f.label}}: </label>
+            {{ f }}
+        </div>
+        <div class="form-error">{{ f.errors }}</div>
+        {% endfor %}
+
+        <div class="button-wrapper">
+            <button class="content__view button-btn" type="submit">Узнать Результат</button>
+        </div>
+
+    </form>
+</div>
+{% endblock %}
